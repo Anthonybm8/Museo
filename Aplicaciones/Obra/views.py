@@ -27,3 +27,9 @@ def guardarObra(request):
         )
         messages.success(request,"Cargo guardado exitosamente")
         return redirect('inicioob')    
+
+def eliminarObra(request, id):
+    obraEliminar = Obra.objects.get(id=id)
+    obraEliminar.delete()
+    messages.success(request, "Obra eliminada exitosamente")
+    return redirect('inicioob')
