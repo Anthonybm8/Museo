@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -14,24 +13,17 @@
     <title>Space Dynamic - SEO HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'plantilla/Space/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-space-dynamic.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-<!--
-    
-TemplateMo 562 Space Dynamic
-
-https://templatemo.com/tm-562-space-dynamic
-
--->
-  </head>
+    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/templatemo-space-dynamic.css' %}">
+    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'plantilla/Space/css/tiny-slider.css' %}">
+</head>
 
 <body>
-
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
@@ -52,7 +44,7 @@ https://templatemo.com/tm-562-space-dynamic
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
               <h4>Spac<span>Dyna</span></h4>
             </a>
             <!-- ***** Logo End ***** -->
@@ -75,4 +67,38 @@ https://templatemo.com/tm-562-space-dynamic
       </div>
     </div>
   </header>
-{% block body %}{% endblock %}
+  <!-- ***** Header Area End ***** -->
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- ***** Footer Start ***** -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+          <p>© Copyright {% now "Y" %} Space Dynamic Co. All Rights Reserved. 
+          <br>Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ***** Footer End ***** -->
+
+  <!-- Scripts -->
+  <script src="{% static 'plantilla/Space/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'plantilla/Space/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'plantilla/Space/assets/js/owl-carousel.js' %}"></script>
+  <script src="{% static 'plantilla/Space/assets/js/animation.js' %}"></script>
+  <script src="{% static 'plantilla/Space/assets/js/imagesloaded.js' %}"></script>
+  <script src="{% static 'plantilla/Space/assets/js/custom.js' %}"></script>
+  <script src="{% static 'plantilla/Space/js/tiny-slider.js' %}"></script>
+
+  <!-- Inicialización de scripts -->
+  <script>
+    $(window).on('load', function() {
+      $('.js-preloader').fadeOut(800);
+    });
+  </script>
+</body>
+</html>
