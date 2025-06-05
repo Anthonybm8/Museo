@@ -3,45 +3,122 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--importando Sweetalert-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Museo - Administración</title>
 
-    <title>Space Dynamic - SEO HTML5 Template</title>
-    <!-- 1. importando archivo jv de jquery-->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <!-- 2. jsquery validation-->
-     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-        <!--importando archivo jv de bootstrap-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!--importando archivo css de bootstrap-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--importando awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--importando datatables-->
-    <link rel="stylesheet" href="//cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css">
-    <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
-    <!--importando fileinput-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/js/fileinput.min.js" integrity="sha512-0wQvB58Ha5coWmcgtg4f11CTSSxfrfLClUp9Vy0qhzYzCZDSnoB4Vhu5JXJFs7rU24LE6JsH+6hpP7vQ22lk5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/css/fileinput.min.css" integrity="sha512-yDVMONIXJPPAoULZ92Ygngsn8ZUGB4ejm6fCc6q9ZvdH8blFAOgg75XZSEaAJ5m4E/yPI1BAi5fF2axMHVuZ5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'plantilla/Space/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Fuentes y estilos base -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/css/fileinput.min.css">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/fontawesome.css' %}">
-    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/templatemo-space-dynamic.css' %}">
-    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/animated.css' %}">
-    <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/owl.css' %}">
-    <link rel="stylesheet" href="{% static 'plantilla/Space/css/tiny-slider.css' %}">
+  <!-- Plantilla original -->
+  <link href="{% static 'plantilla/Space/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/fontawesome.css' %}">
+  <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/templatemo-space-dynamic.css' %}">
+  <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/animated.css' %}">
+  <link rel="stylesheet" href="{% static 'plantilla/Space/assets/css/owl.css' %}">
+  <link rel="stylesheet" href="{% static 'plantilla/Space/css/tiny-slider.css' %}">
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/js/fileinput.min.js"></script>
+
+  <!-- Estilos personalizados -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .header-area {
+      background-color: #002244;
+    }
+
+    .header-area .logo h4 {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .header-area .logo h4 span {
+      color: #d4af37;
+    }
+
+    .main-nav ul.nav > li > a {
+      color: #ffffff !important;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .main-nav ul.nav > li > a:hover {
+      color: #d4af37 !important;
+    }
+
+    .nav li {
+      position: relative;
+    }
+
+    .nav li .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #003366;
+      top: 100%;
+      left: 0;
+      z-index: 999;
+      border-radius: 5px;
+      padding: 0;
+      margin: 0;
+      min-width: 150px;
+    }
+
+    .nav li:hover .dropdown-menu {
+      display: block;
+    }
+
+    .nav li .dropdown-menu a {
+      color: #fff !important;
+      padding: 10px 15px;
+      display: block;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .nav li .dropdown-menu a:hover {
+      background-color: #d4af37;
+      color: #000 !important;
+    }
+
+    footer {
+      background-color: #002244;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .main-red-button a {
+      background-color: #d4af37;
+      color: #000 !important;
+      padding: 8px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .main-red-button a:hover {
+      background-color: #c0a12b;
+      color: #fff !important;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- ***** Preloader Start ***** -->
+
+  <!-- Preloader -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
       <span class="dot"></span>
@@ -52,54 +129,62 @@
       </div>
     </div>
   </div>
-  <!-- ***** Preloader End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+  <!-- Header -->
+  <header class="header-area header-sticky wow slideInDown">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
             <a href="#" class="logo">
               <h4>Mu<span>seo</span></h4>
             </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a href="{% url 'inicio' %}" class="active">Inicio</a></li>
-              <li class="scroll-to-section"><a href="{% url 'inicioob' %}">Obras</a></li>
-              <li class="scroll-to-section"><a href="{% url 'inicio' %}">Artistas</a></li>
-              <li class="scroll-to-section"><div class="main-red-button"><a href="#">Informacion</a></div></li> 
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
+
+              <li class="scroll-to-section">
+                <a href="{% url 'inicioob' %}">Obras</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Editar Obras</a></li>
+                </ul>
+              </li>
+
+              <li class="scroll-to-section">
+                <a href="{% url 'inicio' %}">Artistas</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Editar Artistas</a></li>
+                </ul>
+              </li>
+
+              <li class="scroll-to-section">
+                <div class="main-red-button">
+                  <a href="#">Información</a>
+                </div>
+              </li>
+            </ul>
+            <a class='menu-trigger'><span>Menu</span></a>
           </nav>
         </div>
       </div>
     </div>
   </header>
-  <!-- ***** Header Area End ***** -->
 
+  <!-- Contenido dinámico -->
   {% block content %}
   {% endblock %}
 
-  <!-- ***** Footer Start ***** -->
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-          <p>© Copyright {% now "Y" %} Space Dynamic Co. All Rights Reserved. 
-          
+        <div class="col-lg-12">
+          <p>&copy; {% now "Y" %} Museo Virtual. Todos los derechos reservados.</p>
         </div>
       </div>
     </div>
   </footer>
-  <!-- ***** Footer End ***** -->
 
-  <!-- Scripts -->
+  <!-- Scripts de la plantilla -->
   <script src="{% static 'plantilla/Space/vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'plantilla/Space/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'plantilla/Space/assets/js/owl-carousel.js' %}"></script>
@@ -108,11 +193,12 @@
   <script src="{% static 'plantilla/Space/assets/js/custom.js' %}"></script>
   <script src="{% static 'plantilla/Space/js/tiny-slider.js' %}"></script>
 
-  <!-- Inicialización de scripts -->
+  <!-- Inicialización -->
   <script>
-    $(window).on('load', function() {
+    $(window).on('load', function () {
       $('.js-preloader').fadeOut(800);
     });
   </script>
+
 </body>
 </html>

@@ -1,0 +1,41 @@
+{% extends 'plantillas.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br><br>
+<div>
+    <div class="col-md-3" ></div>
+    <div class="col-md-6 bg-light" >
+        <h1>Editar Artista</h1>
+        <form action="/procesarEdicionArtista/{{ artista.id }}" id="frm_nuevo_artista" 
+        method="post" enctype="multipart/form-data">            
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ artista.id }}">
+            <label for="">Nombre (*):</label><br><br>
+            <input placeholder="Ingrese el nombre del artista" class="form-control" type="text" name="nombre" id="nombre" value="{{ artista.nombre }}"><br><br>
+            <label for="">Apellido (*):</label><br><br>
+            <input placeholder="Ingrese el apellido del artista" class="form-control" type="text" name="apellido" id="apellido" value="{{ artista.apellido }}"><br><br>
+            <label for="obra">Obra</label><br>
+            <select name="obra" id="obra" multiple>
+                <option value="">Seleccione las obras</option>
+                {% for e in obras %}
+                    <option value="{{e.id}}" {% if e in artista.obra.all %}selected{% endif %}>{{e.titulo}}</option>
+                {% endfor %}
+            </select><br><br>
+            <label for="">Foto del artista:</label><br><br>
+            {% if artista.foto %}
+                <img src="{{ artista.foto.url }}" height="100px" alt="Foto actual"><br>
+                <small>Foto actual: {{ artista.foto.name }}</small><br>
+            {% endif %}
+            <input type="file" name="foto" id="foto" class="form-control"><br><br>
+
+            <label for="">Biografía del artista:</label><br><br>
+            {% if artista.biografia %}
+                <small>Biografía actual: {{ artista.biografia.name }}</small><br>
+                <a href="{{ artista.biografia.url }}" target="_blank">Ver biografía actual</a><br>
+            {% endif %}
+            <input type="file" name="biografia" id="biografia" class="form-control"><br><br>
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-outline-danger" href="{% url 'inicio' %}">Cancelar</a><br><br>
+            
+        </form>
+{% endblock %}
