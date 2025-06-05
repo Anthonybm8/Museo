@@ -38,7 +38,27 @@
             {% endif %}
             <br>
             <label for="">Nueva informacion:</label>
-            <input class="form-control" type="file" name="informacion" id="informacion"><br><br>         
+            <input class="form-control" type="file" name="informacion" id="informacion"><br><br>   
+            
+            <!-- Después del campo de información -->
+            <label for="">Técnica utilizada:</label><br><br>
+            <input class="form-control" type="text" name="tecnica_utilizada" id="tecnica_utilizada" 
+                value="{{ obra.tecnica_utilizada }}"><br><br>
+
+            <label for="">Año de creación:</label><br><br>
+            <input class="form-control" type="number" name="anio_creacion" id="anio_creacion" 
+                value="{{ obra.anio_creacion }}"><br><br>
+
+            <label for="">Imagen de la obra actual:</label><br>
+            {% if obra.imagen_obra %}
+                <img src="{{ obra.imagen_obra.url }}" height="80px" alt="Imagen actual"><br>
+                <small>{{ obra.imagen_obra.name|slice:"7:" }}</small>
+            {% else %}
+                <p>No hay imagen disponible</p>
+            {% endif %}
+            <br>
+            <label for="">Nueva imagen:</label>
+            <input class="form-control" type="file" name="imagen_obra" id="imagen_obra"><br><br>
 
             <button class="btn btn-success" type="file" name="informacion" id="informacion">Editar</button>
             <a class="btn btn-outline-danger" href="{% url 'inicioob' %}"><i class="fa fa-times"></i>Cancelar</a><br><br>
