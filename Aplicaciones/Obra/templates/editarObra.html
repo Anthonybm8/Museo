@@ -1,0 +1,51 @@
+{% extends 'plantillas.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br><br>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light">
+        <h1>Editar Obra</h1>\
+        <form action="{% url 'procesarEdicionObra' obra.id %}" method="post" enctype="multipart/form-data" id="frm_editar_obra">            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ obra.id }}">
+            <label for="">Titulo (*):</label><br><br>
+            <input placeholder="ingrese el titulo de la obra" class="form-control" type="text" name="titulo" id="titulo" value="{{ obra.titulo }}"><br><br>
+            <label for="">Descripcion (*):</label><br><br>
+            <textarea placeholder="ingrese la descripcion de la obra" class="form-control" name="descripcion" id="descripcion">{{ obra.descripcion }}</textarea><br><br>
+            <label for="">Fecha de creacion (*):</label><br><br>
+            <input class="form-control" type="date" name="fecha_creacion" id="fecha_creacion" 
+            value="{{ obra.fecha_creacion|date:'Y-m-d' }}" required><br><br>
+            <label for="">Foto de la obra:</label><br><br>
+            {% if obra.foto %}
+            <img src="{{ obra.foto.url }}" height="80px" alt="Foto actual"><br>
+            <small>{{ obra.logo.name|slice:"7:" }}</small>
+            {% else %}
+                <p>No hay foto disponible</p>
+            {% endif %}
+            <br>
+            <label for="">Nueva foto:</label>
+            <input class="form-control" type="file" name="foto" id="foto" ><br><br>
+
+
+            <label for="">Informacion actual</label><br>
+            {% if obra.informacion %}
+                <a href="{{ obra.informacion.url }}" target="_blank">Ver documento actual</a><br>
+                <small>{{ obra.informacion.name|slice:"7:" }}</small><br>
+
+            {% else %}
+                <p>No hay información disponible</p>
+            {% endif %}
+            <br>
+            <label for="">Nueva informacion:</label>
+            <input class="form-control" type="file" name="informacion" id="informacion"><br><br>         
+
+            <button class="btn btn-success" type="file" name="informacion" id="informacion">Editar</button>
+            <a class="btn btn-outline-danger" href="/"><i class="fa fa-times"></i>Cancelar</a><br><br>
+        </form>
+    </div>
+</div>
+
+
+<br><br><br><br><br><br>
+{% endblock %}
