@@ -3,6 +3,9 @@
 {% block content %}
 <br><br><br><br><br><br>
 <h1 class="text-center">Listado de Obras</h1>
+<a href="nuevaObra" class="btn btn-primary">
+    Agregar Obra
+</a>
 <hr>
 <table class="table table-bordered table-striped table-hover" id="tbl_cargos">
     <thead>
@@ -46,7 +49,7 @@
                 NINGUNA INFORMACION
                 {% endif %}
             </td>
-            
+
         </tr>
         {% endfor %}
     </body>
