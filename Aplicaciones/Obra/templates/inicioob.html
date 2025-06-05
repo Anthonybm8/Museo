@@ -1,7 +1,63 @@
 {% extends 'plantillas.html' %}
 {% load static %}
 {% block content %}
-<br><br><br><br>
-<h1>como estas</h1>
+<br><br><br><br><br><br>
+<h1 class="text-center">Listado de Obras</h1>
+<hr>
+<table class="table table-bordered table-striped table-hover" id="tbl_cargos">
+    <thead>
+        <tr>
+            <th>TITULO</th>
+            <th>DESCRIPCION</th>
+            <th>FECHA</th>
+            <th>FOTO</th>
+            <th>INFORMACION</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <body>
+        {% for obra in obras %}
+        <tr>
+            <td>{{ obra.titulo }}</td>
+            <td>{{ obra.descripcion }}</td>
+            <td>{{ obra.fecha_creacion }}</td>
+            <td>
+                {% if obra.foto %}
+                <img src="{{ obra.foto.url }}" height="80px" alt="">
+                {% else %}
+                NINGUNA FOTO
+                {% endif %}
+            </td>
+            <td>
+                {% if obra.informacion %}
+                <iframe 
+                                src="{{ obra.informacion.url }} " 
+                                width="300" 
+                                height="250"
+                                style="border: 1px solid #ddd; background: #f8f9fa;"
+                                title="Vista previa del documento"
+                                type="application/pdf">
+                            </iframe>
+                            <p>{{ obra.informacion.name |slice:"7:" }}</p>
+                            <br>
+                <a href="{{ obra.informacion.url }}" download class="btn btn-sm btn-primary">Descargar</a>
+                <a href="{{ obra.informacion.url }}" target="_blank" class="btn btn-sm btn-secondary">Ver en pestaña</a>
+                {% else %}
+                NINGUNA INFORMACION
+                {% endif %}
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </body>
+</table>
 
+
+
+
+
+
+
+
+<br><br><br><br><br><br>
 {% endblock %}
