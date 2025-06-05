@@ -15,11 +15,13 @@
             <input placeholder="Ingrese el nombre del artista" class="form-control" type="text" name="nombre" id="nombre"><br><br>
             <label for="">Apellido (*):</label><br><br>
             <input placeholder="Ingrese el apellido del artista" class="form-control" type="text" name="apellido" id="apellido"><br><br>
-            <label for="">Obra asociada (*):</label><br><br>
-            <select class="form-control" name="obra_id" id="obra_id">
-                {% for obra in obras %}
-                <option value="{{ obra.id }}">{{ obra.titulo }}</option>
-                {% endfor %}
+            <label for="obra" >Obra</label><br>
+            <select name="obra" id="obra" multiple>
+                <option value="">Seleccione las obras</option>
+                {% for e in obra%}
+                    <option value="{{e.id}}">{{e.titulo}}</option>
+                {% endfor%}
+            </select><br>
             </select><br><br>
             <label for="">Foto del artista:</label><br><br>
             <input type="file" name="foto" id="foto" class="form-control"><br><br>

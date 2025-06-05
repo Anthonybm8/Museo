@@ -22,8 +22,14 @@
         <tr>
             <td>{{ artista.nombre }}</td>
             <td>{{ artista.apellido }}</td>
-            <td>{{ artista.obra.titulo }}</td>
-            <td>0
+            <td>
+                {% for obra in artista.obra.all %}
+                    {{ obra.titulo }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    No hay obra
+                {% endfor %}
+            </td>
+            <td>
                 {% if artista.foto %}
                 <img src="{{ artista.foto.url }}" height="80px" alt="Foto del artista">
                 {% else %}

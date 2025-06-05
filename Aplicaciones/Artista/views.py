@@ -16,7 +16,7 @@ def guardarArtista(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
         apellido = request.POST.get('apellido')
-        obra_ids = request.POST.getlist("Obra")
+        obra_ids = request.POST.getlist("obra")
 
         foto = request.FILES.get('foto')
         biografia = request.FILES.get('biografia')
@@ -28,5 +28,8 @@ def guardarArtista(request):
             biografia=biografia
 
         )
+    for id in obra_ids:
+        obra = Obra.objects.get(id=id)
+        nuevoArtista.obra.add(obra)
         messages.success(request, "Artista guardado exitosamente")
         return redirect('inicio')
