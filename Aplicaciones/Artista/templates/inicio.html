@@ -7,7 +7,7 @@
     Agregar Artista
 </a>
 <hr>
-<table class="table table-bordered table-striped table-hover ">
+<table class="table table-bordered table-striped table-hover " id="tabla">
     <thead>
         <tr>
             <th>NOMBRE</th>
@@ -78,6 +78,23 @@
         </tr>
         {% endfor %}
     </tbody>
+    <script>
+        $(document).ready(function() {
+            let table = new DataTable('#tabla', {
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/2.3.1/i18n/es-ES.json'
+                },
+                dom: 'Bfrtip', 
+                buttons: [
+                    'copy',
+                    'csv',
+                    'excel',
+                    'pdf',
+                    'print'
+                ]
+            });
+        });
+        </script>
 </table>
 
 {% endblock %}

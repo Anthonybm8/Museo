@@ -6,7 +6,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Nueva Obra</h1>
-    <form action="guardarObra" id="frm_nuevo_cargo"
+    <form action="guardarObra" id="frm_nuevo_obra"
     enctype="multipart/form-data"
     method="post" >
     {% csrf_token %}
@@ -27,6 +27,72 @@
     </form>
     </div>
 </div>
+<script>
+    $("#frm_nuevo_obra").validate({
+        rules:{
+            "titulo":{
+                required:true,
+                minlength:5,// cuenta caracteres 
+                maxlength:20// caracteres maximos
+            },
+            "descripcion":{
+                required:true,
+                minlength:5,// cuenta caracteres 
+                maxlength:20// caracteres maximos
+            },
+            "fecha_creacion":{
+                required:true,
+                date:true // Validación de fecha
+            },
+            "foto":{
+                required:true
+            },
+            "informacion": {
+                required:true
+            }
+        },
+        messages:{
+            "nombre":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Ingresar minimo 5 caracteres",// cuenta caracteres 
+                maxlength:"Ingresar maxima 20 caracteres"// caracteres maximos
+            },
+            "apellido":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Ingresar minimo 5 caracteres",// cuenta caracteres 
+                maxlength:"Ingresar maxima 20 caracteres"// caracteres maximos
+            },
+
+            "fecha_creacion":{
+                required:"Por favor el Campo es obligatorio,seleccione al menos una obra"
+            },
+            "foto":{
+                required:"Campo obligatorio por favor agregue una foto"
+            },
+            "informacion":{
+                required:"Campo obligatorio por favor ingrese un pdf"
+            }
+        }
+    });
+</script>
+<script>
+    $("#foto").fileinput({
+            language: "es",
+            allowedFileExtensions: ["png|jpg|jpeg"],
+            showCaption: false,
+            dropZoneEnabled: true,
+            showClose: false
+    });
+</script>
+<script>
+    $("#informacion").fileinput({
+            language: "es",
+            allowedFileExtensions: ["pdf"],
+            showCaption: false,
+            dropZoneEnabled: true,
+            showClose: false
+    });
+</script>
 
 
 {% endblock %}

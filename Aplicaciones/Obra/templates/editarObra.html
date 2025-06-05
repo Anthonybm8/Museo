@@ -45,52 +45,75 @@
         </form>
     </div>
 </div>
+
+
+<br><br><br><br><br><br>
 <script>
     $("#frm_editar_obra").validate({
-        rules: {
-            "titulo": {
-                required: true,
-                minlength: 5, // cuenta caracteres
-                maxlength: 50 // caracteres maximos
+        rules:{
+            "titulo":{
+                required:true,
+                minlength:5,// cuenta caracteres 
+                maxlength:20// caracteres maximos
             },
-            "descripcion": {
-                required: true,
-                minlength: 10, // cuenta caracteres
-                maxlength: 500 // caracteres maximos
+            "descripcion":{
+                required:true,
+                minlength:5,// cuenta caracteres 
+                maxlength:20// caracteres maximos
             },
-            "fecha_creacion": {
-                required: true
+            "fecha_creacion":{
+                required:true,
+                date:true // Validación de fecha
             },
-            "foto": {
-                extension: "jpg|jpeg|png|gif" // formatos de imagen permitidos
+            "foto":function() {
+                // Solo es requerido si no hay archivo ya cargado
+                return "{{ artista.foto|default:'' }}" === "";
             },
-            "informacion": {
-                extension: "pdf|doc|docx" // formatos de documento permitidos
+            "informacion":function() {
+                // Solo es requerido si no hay archivo ya cargado
+                return "{{ artista.biografia|default:'' }}" === "";
             }
         },
-        messages: {
-            "titulo": {
-                required: "El título es obligatorio",
-                minlength: "El título debe tener al menos 5 caracteres",
-                maxlength: "El título no puede exceder los 50 caracteres"
+        messages:{
+            "nombre":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Ingresar minimo 5 caracteres",// cuenta caracteres 
+                maxlength:"Ingresar maxima 20 caracteres"// caracteres maximos
             },
-            "descripcion": {
-                required: "La descripción es obligatoria",
-                minlength: "La descripción debe tener al menos 10 caracteres",
-                maxlength: "La descripción no puede exceder los 500 caracteres"
+            "apellido":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Ingresar minimo 5 caracteres",// cuenta caracteres 
+                maxlength:"Ingresar maxima 20 caracteres"// caracteres maximos
             },
-            "fecha_creacion": {
-                required: "La fecha de creación es obligatoria"
+
+            "fecha_creacion":{
+                required:"Por favor el Campo es obligatorio,seleccione al menos una obra"
             },
-            "foto": {
-                extension: "Por favor, sube una imagen válida (JPG, JPEG, PNG, GIF)"
+            "foto":{
+                required:"Campo obligatorio por favor agregue una foto"
             },
-            "informacion": {
-                extension: "Por favor, sube un documento válido (PDF, DOC, DOCX)"
+            "informacion":{
+                required:"Campo obligatorio por favor ingrese un pdf"
             }
         }
     });
 </script>
-
-<br><br><br><br><br><br>
+<script>
+    $("#foto").fileinput({
+            language: "es",
+            allowedFileExtensions: ["png|jpg|jpeg"],
+            showCaption: false,
+            dropZoneEnabled: true,
+            showClose: false
+    });
+</script>
+<script>
+    $("#informacion").fileinput({
+            language: "es",
+            allowedFileExtensions: ["pdf"],
+            showCaption: false,
+            dropZoneEnabled: true,
+            showClose: false
+    });
+</script>
 {% endblock %}
