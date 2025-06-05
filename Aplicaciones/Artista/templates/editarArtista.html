@@ -38,4 +38,72 @@
             <a class="btn btn-outline-danger" href="{% url 'inicio' %}">Cancelar</a><br><br>
             
         </form>
+
+        <script>
+            $("#frm_nuevo_artista").validate({
+                rules:{
+                    "nombre":{
+                        required:true,
+                        minlength:5,// cuenta caracteres 
+                        maxlength:20// caracteres maximos
+                    },
+                    "apellido":{
+                        required:true,
+                        minlength:5,// cuenta caracteres 
+                        maxlength:20// caracteres maximos
+                    },
+                    "obra":{
+                        required:true
+                    },
+                    "foto":function() {
+                        // Solo es requerido si no hay archivo ya cargado
+                        return "{{ artista.foto|default:'' }}" === "";
+                    },
+                    "biografia":function() {
+                        // Solo es requerido si no hay archivo ya cargado
+                        return "{{ artista.biografia|default:'' }}" === "";
+                    }
+                },
+                messages:{
+                    "nombre":{
+                        required:"Por favor el Campo es obligatorio",
+                        minlength:"Ingresar minimo 5 caracteres",// cuenta caracteres 
+                        maxlength:"Ingresar maxima 20 caracteres"// caracteres maximos
+                    },
+                    "apellido":{
+                        required:"Por favor el Campo es obligatorio",
+                        minlength:"Ingresar minimo 5 caracteres",// cuenta caracteres 
+                        maxlength:"Ingresar maxima 20 caracteres"// caracteres maximos
+                    },
+        
+                    "obra":{
+                        required:"Por favor el Campo es obligatorio,seleccione al menos una obra"
+                    },
+                    "foto":{
+                        required:"Campo obligatorio por favor agregue una foto"
+                    },
+                    "biografia":{
+                        required:"Campo obligatorio por favor ingrese un pdf"
+                    }
+                }
+            });
+        </script>
+        <script>
+            $("#foto").fileinput({
+                    language: "es",
+                    allowedFileExtensions: ["png|jpg|jpeg"],
+                    showCaption: false,
+                    dropZoneEnabled: true,
+                    showClose: false
+            });
+        </script>
+        <script>
+            $("#biografia").fileinput({
+                    language: "es",
+                    allowedFileExtensions: ["pdf"],
+                    showCaption: false,
+                    dropZoneEnabled: true,
+                    showClose: false
+            });
+        </script>
 {% endblock %}

@@ -45,7 +45,52 @@
         </form>
     </div>
 </div>
-
+<script>
+    $("#frm_editar_obra").validate({
+        rules: {
+            "titulo": {
+                required: true,
+                minlength: 5, // cuenta caracteres
+                maxlength: 50 // caracteres maximos
+            },
+            "descripcion": {
+                required: true,
+                minlength: 10, // cuenta caracteres
+                maxlength: 500 // caracteres maximos
+            },
+            "fecha_creacion": {
+                required: true
+            },
+            "foto": {
+                extension: "jpg|jpeg|png|gif" // formatos de imagen permitidos
+            },
+            "informacion": {
+                extension: "pdf|doc|docx" // formatos de documento permitidos
+            }
+        },
+        messages: {
+            "titulo": {
+                required: "El título es obligatorio",
+                minlength: "El título debe tener al menos 5 caracteres",
+                maxlength: "El título no puede exceder los 50 caracteres"
+            },
+            "descripcion": {
+                required: "La descripción es obligatoria",
+                minlength: "La descripción debe tener al menos 10 caracteres",
+                maxlength: "La descripción no puede exceder los 500 caracteres"
+            },
+            "fecha_creacion": {
+                required: "La fecha de creación es obligatoria"
+            },
+            "foto": {
+                extension: "Por favor, sube una imagen válida (JPG, JPEG, PNG, GIF)"
+            },
+            "informacion": {
+                extension: "Por favor, sube un documento válido (PDF, DOC, DOCX)"
+            }
+        }
+    });
+</script>
 
 <br><br><br><br><br><br>
 {% endblock %}
