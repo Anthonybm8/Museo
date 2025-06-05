@@ -5,6 +5,6 @@ from Aplicaciones.Obra.models import Obra
 class Artista(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    Obra = models.ForeignKey(Obra, on_delete=models.CASCADE)
+    obra = models.ManyToManyField(Obra, blank=True)
     foto = models.ImageField(upload_to='artistas', null=True, blank=True)
     biografia = models.FileField(upload_to='artistas', null=True, blank=True)

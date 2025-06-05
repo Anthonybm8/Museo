@@ -3,6 +3,9 @@
 {% block content %}
 <br><br><br><br><br><br>
 <h1 class="text-center">Listado de Artistas</h1>
+<a href="nuevoArtista" class="btn btn-primary">
+    Agregar Artista
+</a>
 <hr>
 <table class="table table-bordered table-striped table-hover ">
     <thead>
@@ -14,6 +17,34 @@
             <th>BIOGRAFIA</th>
         </tr>
     </thead>
+    <tbody>
+        {% for artista in artistas %}
+        <tr>
+            <td>{{ artista.nombre }}</td>
+            <td>{{ artista.apellido }}</td>
+            <td>{{ artista.obra.titulo }}</td>
+            <td>0
+                {% if artista.foto %}
+                <img src="{{ artista.foto.url }}" height="80px" alt="Foto del artista">
+                {% else %}
+                NINGUNA FOTO
+                {% endif %}
+            </td>
+            <td>
+                {% if artista.biografia %}
+                <iframe src="{{ artista.biografia.url }}" width="300" height="250" style="border: 1px solid #ddd; background: #f8f9fa;" title="Vista previa de la biografía"></iframe>
+                <p>{{ artista.biografia.name | slice:"7:" }}</p>
+                <br>
+                <a href="{{ artista.biografia.url }}" download class="btn btn-sm btn-primary">Descargar</a>
+                <a href="{{ artista.biografia.url }}" target="_blank" class="btn btn-sm btn-secondary">Ver en pestaña</a>
+                {% else %}
+                NINGUNA BIOGRAFIA
+                {% endif %}
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 {% endblock %}
