@@ -36,3 +36,9 @@ def guardarArtista(request):
 
         messages.success(request, "Artista guardado exitosamente")
         return redirect('inicio')
+
+def eliminarArtista(request, id):
+        artista = Artista.objects.get(id=id)
+        artista.delete()
+        messages.success(request, "Artista eliminado exitosamente")
+        return redirect('inicio')
