@@ -18,7 +18,7 @@
             <label for="obra" >Obra</label><br>
             <select name="obra" id="obra" multiple>
                 <option value="">Seleccione las obras</option>
-                {% for e in obra%}
+                {% for e in obras%}
                     <option value="{{e.id}}">{{e.titulo}}</option>
                 {% endfor%}
             </select><br>

@@ -26,10 +26,13 @@ def guardarArtista(request):
             apellido=apellido,
             foto=foto,
             biografia=biografia
-
         )
-    for id in obra_ids:
-        obra = Obra.objects.get(id=id)
-        nuevoArtista.obra.add(obra)
+
+        # Evitar IDs vacíos
+        for id in obra_ids:
+            if id:  # Solo si id no está vacío
+                obra = Obra.objects.get(id=id)
+                nuevoArtista.obra.add(obra)
+
         messages.success(request, "Artista guardado exitosamente")
         return redirect('inicio')
